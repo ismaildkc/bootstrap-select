@@ -426,13 +426,14 @@
           'tokens'
         ],
         searchSuccess = false;
+        searchString = searchString.replace(/(\.+?)|(-+?)|(\/+?)|( +?)/g , '').split(' ').join('').toLowerCase();
 
     for (var i = 0; i < stringTypes.length; i++) {
       var stringType = stringTypes[i],
           string = li[stringType];
 
       if (string) {
-        string = string.toString();
+        string = string.toString().replace(/(\.+?)|(-+?)|(\/+?)|( +?)/g , '').split(' ').join('').toLowerCase();
 
         // Strip HTML tags. This isn't perfect, but it's much faster than any other method
         if (stringType === 'display') {
@@ -449,6 +450,7 @@
         }
 
         if (searchSuccess) break;
+
       }
     }
 
